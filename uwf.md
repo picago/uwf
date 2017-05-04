@@ -304,16 +304,47 @@ HOST: http://uwf.apiblueprint.org/
     + Body
 
             {
-                "executor": "lisi",
+                "uid": "lisi",
                 "taskId": "sssskkkkk",
+                "reason": "回退的原因"
                 "vars":{}
             }
 
     + Attributes (object)
 
-        + executor (string, required) - 任务(节点)执行人
+        + uid (string, required) - 任务(节点)执行人
         + taskId (number, required) - 任务id
+        + reason (string) - 回退原因
         + vars (object) - 流程变量
+        
++ Response 200 (application/json)
+    + Body 
+        
+            "head":{
+                "errorCode":"0",
+                "errorMsg":"success"
+            }
+
+### 改签 [POST /inner/taskService/delegate]
+
+改签
+
++ Request (application/json)
+    + Body
+
+            {
+                "applicantUser": "lisi",
+                "delegateUser": "sssskkkkk",
+                "reason": "委托的原因"
+                "taskId": "akkdkkdkdk"
+            }
+
+    + Attributes (object)
+
+        + applicantUser (string, required) - 委托人
+        + delegateUser (string, required) -  受委托人
+        + reason (string) - 委托的原因
+        + taskId (string) - 任务id
         
 + Response 200 (application/json)
     + Body 
@@ -328,6 +359,7 @@ HOST: http://uwf.apiblueprint.org/
 使用流程设计器的时候,绑定在任务节点的表单url
 
 + Request (application/json)
+
     + Body
 
             {
@@ -341,12 +373,51 @@ HOST: http://uwf.apiblueprint.org/
         + taskId (number, required) - 任务id
 
 + Response 200 (application/json)
+
     + Body 
-        
+    
+            {
             "head":{
                 "errorCode":"0",
                 "errorMsg":"success"
+            },
+            "body":{
+                "url":"http://xxxxx.com?sid=kkkkk"
             }
+            }
+
+
+### 流程相关的表单变量 [POST /inner/formService/form-vars]
+
+使用流程设计器的时候,绑定在任务节点的表单url
+
++ Request (application/json)
+
+    + Body
+
+            {
+                "sid": "token---skdkfkskd",
+                "processInstId": "sssskkkkk"
+            }
+
+    + Attributes (object)
+
+        + sid (string, required) - 登录时候获取到的token
+        + processInstId (number, required) - 流程实例id
+
++ Response 200 (application/json)
+
+    + Body 
+    
+            {
+            "head":{
+                "errorCode":"0",
+                "errorMsg":"success"
+            },
+            "body":{
+                "url":"http://xxxxx.com?sid=kkkkk"
+            }
+            }    
     
 # Data Structures
 
