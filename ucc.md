@@ -1,0 +1,153 @@
+FORMAT: 1A
+HOST: http://uwf.apiblueprint.org/
+
+# 统一用户中心(Unified User Center) API
+
+因为现阶段有炎黄AWS和运营中心,两套用户系统,为了维护方便,特意设立一个统一用户中心
+
+## UUC API
+
+### 新增/修改用户 [POST /inner/userService/save]
+
+新增修改用户的接口
+
++ Request (application/json)
+    + Body
+
+            {
+                "username": "fore",
+                "uid":"u01",
+                "deptId":"bm-01",
+                "postId":"gw-01",
+                "state":"enable",
+                "userType":"normal",
+                "createTime":"2017-01-11 01:30:03",
+                "modifyTime":"2017-01-13 11:30:03",
+                "mobile":"18820407900",
+                "email":"chenwenlong@foresee.com.cn",
+                "_operationType":"update"
+            }
+            
+    + Attributes (object)
+
+        + username (string, required) - 用户名
+        + uid    (string, required) - 用户id
+        + deptId    (string, required) - 部门id
+        + postId    (string, required) - 岗位id
+        + userType    (string, required) - 用户类型,
+        + createTime    (string, required) - 创建时间, 格式2017-11-13 07:13:22
+        + modifyTime    (string, required) - 修改时间, 格式2017-11-13 08:13:22
+        + mobile    (string, required) - 手机号
+        + email    (string, required) - 电子邮件
+        + _operationType    (string, required) - add新增,update修改,delete 删除
+        
+        
++ Response 200 (application/json)
+    + Body 
+    
+            {
+             "head":{
+                "errorCode":"0",
+                "errorMsg":"success"
+             }
+            
+
+
+### 增加/修改部门 [POST /inner/deptService/save]
+
+增加/修改部门的接口
+
++ Request (application/json)
+    + Body
+
+            {
+                "deptName": "基础架构部",
+                "deptId" : "1xxxxx",
+                "parentDeptId" : "1xxxxx",
+                "orgId": "123",
+                "zone": "华南区",
+                "_operationType":"add"
+            }
+
+    + Attributes (object)
+
+        + deptName (string, required) - 部门名称
+        + deptId (string, required) - 部门名称
+        + parentDeptId (string, required) - 部门名称
+        + orgId (string, required) - 部门名称
+        + zone (string) - 部门名称
+        + _operationType (string, required) - add新增,update修改,delete 删除
+        
++ Response 200 (application/json)
+    + Body 
+        
+            {
+             "head":{
+                "errorCode":"0",
+                "errorMsg":"success"
+             }
+            }
+
+
+### 增加/修改机构 [POST /inner/orgService/save]
+
+增加/修改机构
+
++ Request (application/json)
+    + Body
+
+            {
+                "id": "1333434",
+                "name":"方欣科技",
+                "desc":"描述信息",
+                "_operationType":"add"
+            }
+
+    + Attributes (object)
+
+        + id (string, required) - 机构id
+        + name (string, required) - 机构名字
+        + desc (string) - 机构描述信息
+        + _operationType (string, required) - add新增,update修改,delete 删除
+        
++ Response 200 (application/json)
+    + Body 
+        
+            {
+             "head":{
+                "errorCode":"0",
+                "errorMsg":"success"
+             }
+            }
+            
+            
+### 增加/修改岗位 [POST /inner/postService/save]
+
+增加/修改岗位
+
++ Request (application/json)
+    + Body
+
+            {
+                "Id": "1333434",
+                "mame":"方欣科技",
+                "desc":"描述信息",
+                "_operationType":"add"
+            }
+
+    + Attributes (object)
+
+        + Id (string, required) - 岗位id
+        + name (string, required) - 岗位名字
+        + desc (string) - 岗位描述信息
+        + _operationType (string, required) - add新增,update修改,delete 删除
+        
++ Response 200 (application/json)
+    + Body 
+        
+            {
+             "head":{
+                "errorCode":"0",
+                "errorMsg":"success"
+             }
+            }
